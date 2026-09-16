@@ -1,8 +1,11 @@
 import './Header.css';
 import { useState } from 'react';
+import ThemeToggle from './ThemeToggle';
+import { useTheme } from '../hooks/useTheme';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const navItems = [
     { label: 'About Me', href: '#about' },
@@ -42,6 +45,8 @@ export default function Header() {
           </a>
         ))}
       </nav>
+
+      <ThemeToggle theme={theme} onToggle={toggleTheme} />
     </header>
   );
 }

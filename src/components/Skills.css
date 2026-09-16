@@ -1,7 +1,7 @@
 .skills-section {
   min-height: 80vh;
   padding: 10% 5%;
-  background: #ffffff;
+  background: var(--color-surface-1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,8 +25,8 @@
   border-radius: var(--radius-pill);
   font-size: 1.1rem;
   font-weight: 500;
-  color: #ffffff;
-  background: linear-gradient(180deg, #143A5A 0%, #35678C 55%, #4C7A9E 100%);
+  color: var(--color-on-brand);
+  background: var(--gradient-brand);
   box-shadow: var(--shadow-sm);
   cursor: default;
   transition: transform 0.3s ease, box-shadow 0.3s ease;

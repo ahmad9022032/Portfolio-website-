@@ -28,7 +28,7 @@
   background: var(--color-surface-2);
   color: var(--color-text-secondary);
   margin-bottom: 2rem;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid var(--color-border-soft);
 }
 
 .hero-title {
@@ -44,7 +44,7 @@
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 400;
   margin-bottom: 2rem;
-  background: linear-gradient(180deg, #143A5A 0%, #35678C 55%, #4C7A9E 100%);
+  background: var(--gradient-brand-text);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -65,7 +65,7 @@
   transform: translate(-50%, -50%);
   width: 60vw;
   height: 60vw;
-  background: radial-gradient(circle, rgba(165,216,255,0.15) 0%, rgba(255,255,255,0) 70%);
+  background: var(--hero-glow);
   z-index: 1;
   pointer-events: none;
 }

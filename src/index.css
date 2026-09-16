@@ -1,24 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
+  color-scheme: light;
+
   /* Base Colors */
-  --color-bg: #f8f9fa; /* Near white */
-  --color-surface-1: #ffffff; /* Off white */
-  --color-surface-2: #f1f3f5; /* Soft grey */
+  --color-bg: #f8f9fa;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f1f3f5;
   --color-text-primary: #212529;
   --color-text-secondary: #868e96;
-  
+
   /* Accents */
-  --color-accent-1: #a5d8ff; /* Light blue */
-  --color-accent-2: #eebefa; /* Light violet */
+  --color-accent-1: #a5d8ff;
+  --color-accent-2: #eebefa;
   --color-accent-gradient: linear-gradient(135deg, var(--color-accent-1) 0%, var(--color-accent-2) 100%);
+
+  /* Brand gradient.
+     `-fill` sits behind white text (chips, featured cards) so it must stay dark.
+     `-text` is painted INTO text via background-clip, so on a dark page it has
+     to invert to a light gradient or the text disappears. */
   --gradient-brand: linear-gradient(180deg, #143A5A 0%, #35678C 55%, #4C7A9E 100%);
-  
+  --gradient-brand-text: var(--gradient-brand);
+  --color-on-brand: #ffffff;
+
+  /* Lines and fills */
+  --color-border: rgba(0, 0, 0, 0.06);
+  --color-border-soft: rgba(0, 0, 0, 0.05);
+  --color-border-brand: rgba(20, 58, 90, 0.12);
+  --color-border-brand-strong: rgba(20, 58, 90, 0.18);
+  --color-chip-bg: rgba(0, 0, 0, 0.04);
+  --color-overlay: rgba(0, 0, 0, 0.75);
+  --color-focus-ring: rgba(52, 103, 140, 0.35);
+
+  /* Frosted panels */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-solid: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(255, 255, 255, 0.5);
+
   /* Depth & Shadows */
-  --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
-  --shadow-md: 0 8px 24px rgba(0,0,0,0.04);
-  --shadow-lg: 0 16px 48px rgba(0,0,0,0.05);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.07);
+  --shadow-card-hover: 0 10px 24px rgba(0, 0, 0, 0.09);
+  --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.18);
   --glow: 0 0 40px rgba(165, 216, 255, 0.4);
+
+  /* Misc themed bits */
+  --noise-opacity: 0.04;
+  --timeline-line: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.05), transparent);
+  --dot-idle: #9CA3AF;
+  --dot-active: #6B7280;
+  --placeholder-gradient: linear-gradient(135deg, #e9ecef 0%, #dee2e6 45%, #ced4da 100%);
+  --hero-glow: radial-gradient(circle, rgba(165, 216, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  /* The portrait is multiply-blended, which only erases a white background
+     against a LIGHT surface. So the frame stays light in both themes - on the
+     dark page it simply reads as a printed photo laid on the page. */
+  --portrait-frame-bg: linear-gradient(165deg, #f4f7fb 0%, #e9eff7 48%, #f6f1f8 100%);
+  --portrait-frame-border: rgba(20, 58, 90, 0.09);
+  --portrait-shadow: 0 18px 48px rgba(20, 58, 90, 0.10), 0 4px 12px rgba(20, 58, 90, 0.05);
+  --portrait-shadow-hover: 0 30px 64px rgba(20, 58, 90, 0.16), 0 6px 16px rgba(20, 58, 90, 0.07);
+  --portrait-vignette: linear-gradient(to top, rgba(20, 58, 90, 0.11), transparent);
+  --contact-glow: radial-gradient(circle, rgba(165, 216, 255, 0.2) 0%, transparent 70%);
 
   /* Layout */
   --radius-sm: 8px;
@@ -28,6 +71,73 @@
 
   /* Typography */
   --font-sans: 'Inter', sans-serif;
+}
+
+/* ── Dark theme ───────────────────────────────────────────────
+   Applied by the inline script in index.html (before first paint,
+   so there is no flash) and toggled by the header button.
+   Only token VALUES change here; no component rule is duplicated.
+   ───────────────────────────────────────────────────────────── */
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #0e131a;
+  --color-surface-1: #141b24;
+  --color-surface-2: #1c252f;
+  --color-text-primary: #e8eef5;
+  --color-text-secondary: #94a3b3;
+
+  --color-accent-1: #2f6d99;
+  --color-accent-2: #6b4d8f;
+
+  --gradient-brand: linear-gradient(180deg, #245b87 0%, #3d7fab 55%, #56a0c9 100%);
+  --gradient-brand-text: linear-gradient(180deg, #7cc0e8 0%, #9ed3f0 55%, #c3e6f9 100%);
+  --color-on-brand: #ffffff;
+
+  --color-border: rgba(255, 255, 255, 0.10);
+  --color-border-soft: rgba(255, 255, 255, 0.08);
+  --color-border-brand: rgba(124, 192, 232, 0.18);
+  --color-border-brand-strong: rgba(124, 192, 232, 0.30);
+  --color-chip-bg: rgba(255, 255, 255, 0.06);
+  --color-overlay: rgba(0, 0, 0, 0.82);
+  --color-focus-ring: rgba(124, 192, 232, 0.55);
+
+  --glass-bg: rgba(20, 27, 36, 0.72);
+  --glass-bg-solid: rgba(20, 27, 36, 0.96);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.55);
+  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 0 10px 28px rgba(0, 0, 0, 0.6);
+  --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.7);
+  --glow: 0 0 40px rgba(86, 160, 201, 0.25);
+
+  --noise-opacity: 0.025;
+  --timeline-line: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.12), transparent);
+  --dot-idle: #55606d;
+  --dot-active: #9ed3f0;
+  --placeholder-gradient: linear-gradient(135deg, #1c252f 0%, #232e3a 45%, #2b3745 100%);
+  --hero-glow: radial-gradient(circle, rgba(86, 160, 201, 0.18) 0%, rgba(14, 19, 26, 0) 70%);
+  --contact-glow: radial-gradient(circle, rgba(86, 160, 201, 0.22) 0%, transparent 70%);
+  /* Frame stays light (see note above); only its depth cues darken. */
+  --portrait-frame-border: rgba(255, 255, 255, 0.14);
+  --portrait-shadow: 0 18px 48px rgba(0, 0, 0, 0.55), 0 4px 12px rgba(0, 0, 0, 0.4);
+  --portrait-shadow-hover: 0 30px 64px rgba(0, 0, 0, 0.65), 0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
+/* Smooth the switch, but never fight a user who wants less motion. */
+html.theme-ready body,
+html.theme-ready body * {
+  transition: background-color 280ms ease, border-color 280ms ease, color 280ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-ready body,
+  html.theme-ready body * {
+    transition: none;
+  }
 }
 
 /* Reset and Global Base */
@@ -79,7 +189,7 @@ img, picture, video, canvas {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(20,58,90,0.06), rgba(52,103,140,0.04));
+  background: var(--placeholder-gradient);
   color: var(--color-text-secondary);
   border-radius: 12px;
   padding: 1rem;
@@ -96,7 +206,7 @@ body::before {
   height: 100%;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.04;
+  opacity: var(--noise-opacity);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -119,14 +229,14 @@ html.lenis, html.lenis body {
 
 /* Utilities */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--glass-border);
 }
 
 .text-gradient {
-  background: var(--gradient-brand);
+  background: var(--gradient-brand-text);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

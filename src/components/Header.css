@@ -30,14 +30,21 @@
   scrollbar-width: none;
 }
 
+/* The header uses gap:1rem, which is wider than the 0.55rem between nav
+   pills. Pulling the toggle back makes it read as part of the nav cluster,
+   sitting right beside the Connect button. */
+.theme-toggle {
+  margin-left: -0.45rem;
+}
+
 /* Mobile menu toggle */
 .site-menu-toggle {
-  margin-left: auto;
+  margin-left: 0.5rem;
   width: 44px;
   height: 36px;
   border-radius: 8px;
-  background: rgba(255,255,255,0.7);
-  border: 1px solid rgba(0,0,0,0.06);
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border);
   display: none;
   align-items: center;
   justify-content: center;
@@ -75,8 +82,8 @@
   border-radius: var(--radius-pill);
   text-decoration: none;
   color: var(--color-text-primary);
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border);
   font-size: 0.88rem;
   font-weight: 500;
   line-height: 1;
@@ -89,7 +96,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(165, 216, 255, 0.28), rgba(238, 190, 250, 0.24));
+  background: var(--color-accent-gradient);
   opacity: 0;
   transition: opacity 180ms ease;
 }
@@ -117,11 +124,24 @@
 
 .site-nav-link:focus-visible,
 .site-brand:focus-visible {
-  outline: 2px solid rgba(52, 103, 140, 0.35);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 3px;
 }
 
 @media (max-width: 640px) {
+  /* The nav becomes an absolutely positioned dropdown here, so it no longer
+     pushes anything right. The theme toggle takes over that job and, via
+     `order`, stays to the left of the hamburger. */
+  .theme-toggle {
+    order: 1;
+    margin-left: auto;
+  }
+
+  .site-menu-toggle {
+    order: 2;
+    margin-left: 0.5rem;
+  }
+
   .site-header {
     width: min(calc(100% - 1rem), 1200px);
     padding: 0.8rem 0.9rem;
@@ -156,7 +176,7 @@
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.75rem;
-    background: rgba(255,255,255,0.95);
+    background: var(--glass-bg-solid);
     border-radius: 12px;
     box-shadow: var(--shadow-md);
     margin-left: 0;

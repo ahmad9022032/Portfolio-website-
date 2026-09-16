@@ -25,7 +25,7 @@
   bottom: 0;
   left: 50%;
   width: 2px;
-  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.05), transparent);
+  background: var(--timeline-line);
   transform: translateX(-50%);
   z-index: 0;
 }
@@ -50,7 +50,7 @@
 
 /* Reduce expensive backdrop blur on experience cards for smoother hover */
 .exp-card.glass-panel {
-  background: rgba(255,255,255,0.78);
+  background: var(--glass-bg);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
@@ -73,13 +73,13 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #6B7280;
+  background-color: var(--dot-active);
   box-shadow: none;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .exp-indicator.active {
-  background-color: #9CA3AF;
+  background-color: var(--dot-idle);
   transform: scale(1.15);
 }
 
