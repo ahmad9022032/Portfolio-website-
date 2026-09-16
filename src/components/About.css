@@ -1,0 +1,144 @@
+.about-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10% 5%;
+  background: var(--color-surface-1);
+  position: relative;
+}
+
+.about-content {
+  max-width: 1240px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.85fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.about-text {
+  font-size: clamp(1rem, 3.5vw, 6rem);
+  font-weight: 450;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* ── Portrait ─────────────────────────────────────────────
+   The source headshot has a solid white background. Rather than
+   letting that read as a white box on a white section, the image is
+   multiply-blended into a softly tinted frame so the backdrop melts
+   away and only the subject remains. `isolation` keeps that blend
+   contained to the frame instead of leaking onto the page.
+   ───────────────────────────────────────────────────────── */
+
+.about-portrait {
+  justify-self: end;
+  width: min(26vw, 340px);
+  margin-right: clamp(0rem, 2vw, 1rem);
+}
+
+.about-portrait-inner {
+  position: relative;
+  aspect-ratio: 413 / 531;
+}
+
+/* Offset gradient plate: adds depth and brings brand colour in */
+.about-portrait-plate {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-brand);
+  opacity: 0.18;
+  transform-origin: center;
+  /* NOTE: rotation/offset are set by Framer Motion in About.jsx.
+     Framer writes an inline `transform`, which would override any
+     transform declared here, so the two must not both set it. */
+}
+
+.about-portrait-frame {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(20, 58, 90, 0.09);
+  background: linear-gradient(165deg, #f4f7fb 0%, #e9eff7 48%, #f6f1f8 100%);
+  box-shadow:
+    0 18px 48px rgba(20, 58, 90, 0.10),
+    0 4px 12px rgba(20, 58, 90, 0.05);
+  transition:
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-portrait-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  transform: scale(1.01);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Grounds the lower edge so the subject does not float unanchored */
+.about-portrait-frame::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 34%;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(20, 58, 90, 0.11), transparent);
+}
+
+.about-portrait:hover .about-portrait-frame {
+  transform: translateY(-8px);
+  box-shadow:
+    0 30px 64px rgba(20, 58, 90, 0.16),
+    0 6px 16px rgba(20, 58, 90, 0.07);
+}
+
+.about-portrait:hover .about-portrait-img {
+  transform: scale(1.045);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+
+@media (max-width: 980px) {
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .about-portrait {
+    justify-self: start;
+    width: min(54vw, 320px);
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-portrait {
+    justify-self: center;
+    width: min(72vw, 290px);
+    margin: 0 auto;
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-portrait-frame,
+  .about-portrait-img {
+    transition: none;
+  }
+
+  .about-portrait:hover .about-portrait-frame {
+    transform: none;
+  }
+
+  .about-portrait:hover .about-portrait-img {
+    transform: scale(1.01);
+  }
+}

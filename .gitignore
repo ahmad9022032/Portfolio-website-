@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.vercel
+
+# VSCode Local History extension snapshots
+.history
+
+# Unused assets inherited from the project this was copied from.
+# Kept on disk locally, but not published to GitHub or deployed.
+public/cards
+public/models
+src/KnightScene.jsx
+
+# Disabled sections whose content belongs to the previous owner
+# (their leadership history and third-party testimonials).
+# Kept on disk locally; not published. Replace the content before reusing.
+src/components/LeadershipCarousel.jsx
+src/components/LeadershipCarousel.css
+src/components/Testimonials.jsx
+src/components/Testimonials.css

@@ -1,0 +1,13 @@
+# Build + local noise
+node_modules
+dist
+.history
+.DS_Store
+
+# Unused assets inherited from the original project this was copied from.
+# Nothing in src/ imports these. Excluding them keeps ~12 MB of the previous
+# owner's card art and the CC-BY chess model off the deployed site.
+# They still exist locally and in git history.
+public/cards
+public/models
+src/KnightScene.jsx

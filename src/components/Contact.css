@@ -1,0 +1,112 @@
+.contact-section {
+  min-height: 100vh;
+  padding: 10% 5%;
+  background: var(--color-surface-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: "";
+  position: absolute;
+  bottom: -20vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 40vh;
+  background: radial-gradient(circle, rgba(165,216,255,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contact-container {
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  padding: 4rem;
+  gap: 4rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  z-index: 10;
+}
+
+.contact-container--single {
+  max-width: 680px;
+}
+
+.contact-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.contact-desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.call-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 0.95rem 1.5rem;
+  margin-bottom: 2.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-text-primary);
+  color: var(--color-surface-1);
+  text-decoration: none;
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.call-button:hover {
+  background: var(--color-accent-1);
+  color: var(--color-surface-1);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-socials {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: auto;
+}
+
+.social-link {
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-surface-2);
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: var(--color-accent-1);
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    padding: 2rem;
+    gap: 3rem;
+  }
+}
