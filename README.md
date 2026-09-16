@@ -138,29 +138,25 @@ This project is deployed as the Vercel project **`ahmad-ml`**, served at
 <https://ahmad-ml.vercel.app>. The earlier auto-generated URL
 `myportfoliosite2-five.vercel.app` still resolves to the same site.
 
-`vercel.json` in the repo root already pins the framework, build command and
-output directory, and sets a one-year immutable cache on `/assets/*`, which is
-safe because Vite fingerprints those filenames.
+`vercel.json` in the repo root pins the framework, build command and output
+directory, and sets a one-year immutable cache on `/assets/*`, which is safe
+because Vite fingerprints those filenames.
 
-The CLI route, run from the project root:
+**Deployment is automatic.** The Vercel project is connected to this GitHub
+repository, so:
+
+- pushing to `main` deploys to production
+- pushing any other branch, or opening a pull request, gets its own preview URL
+
+Nothing needs to be run by hand. To roll back, promote an earlier deployment
+from the project's Deployments tab in the Vercel dashboard.
+
+If you ever need to deploy without pushing, the CLI still works:
 
 ```bash
 npm i -g vercel
 vercel login      # opens a browser; must be run in a real terminal
-vercel            # preview deployment
-vercel --prod     # production deployment
-```
-
-The Git route is usually better, since it redeploys on every push: import the
-repository at vercel.com/new and accept the detected Vite settings.
-
-Note that `origin` currently points at `github.com/fahadqaseem/myportfoliosite2`,
-which is the account this project was originally copied from. Before using the
-Git route, repoint the remote at your own repository:
-
-```bash
-git remote set-url origin https://github.com/<your-account>/<your-repo>.git
-git push -u origin main
+vercel --prod
 ```
 
 ### Uptime
