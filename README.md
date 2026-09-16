@@ -1,5 +1,7 @@
 # Personal Portfolio
 
+### 🔗 Live site: **[ahmad-ml.vercel.app](https://ahmad-ml.vercel.app)**
+
 A single-page portfolio site for an AI/ML and software engineer, built with React and Vite. The page is one continuous scroll with animated section reveals, a custom cursor, smooth inertial scrolling, and scroll-linked parallax.
 
 ## Tech stack
@@ -131,6 +133,10 @@ Output goes to `dist/` as static files, deployable to any static host. No
 server or environment variables are required.
 
 ### Deploying to Vercel
+
+This project is deployed as the Vercel project **`ahmad-ml`**, served at
+<https://ahmad-ml.vercel.app>. The earlier auto-generated URL
+`myportfoliosite2-five.vercel.app` still resolves to the same site.
 
 `vercel.json` in the repo root already pins the framework, build command and
 output directory, and sets a one-year immutable cache on `/assets/*`, which is
